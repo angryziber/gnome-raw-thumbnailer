@@ -1,0 +1,7 @@
+image/x-adobe-dng
+image/x-canon-cr2
+image/x-canon-crw
+image/x-nikon-nef
+image/x-olympus-orf
+image/x-pentax-pef
+image/x-sony-arw
