@@ -140,7 +140,7 @@ int main (int argc, char ** argv)
 	gnome_vfs_init();
 	inputfname = gnome_vfs_get_local_path_from_uri (input_name);
 
-	pixbuf = or_gdkpixbuf_extract_thumbnail(inputfname, output_size);
+	pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, output_size);
 	
 	save_pixbuf(pixbuf, output_name, output_size);
 	

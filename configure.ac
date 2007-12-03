@@ -2,7 +2,7 @@ AC_INIT(src/raw-thumbnailer.c)
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(raw-thumbnailer, 0.99)
+AM_INIT_AUTOMAKE(raw-thumbnailer, 0.99.1)
 
 AM_MAINTAINER_MODE
 
@@ -21,7 +21,7 @@ PKG_CHECK_MODULES(GSF, gnome-vfs-2.0 libgsf-gnome-1 gdk-pixbuf-2.0)
 AC_SUBST(GSF_CFLAGS)
 AC_SUBST(GSF_LIBS)
 
-PKG_CHECK_MODULES(OPENRAW, libopenraw-gnome-1.0)
+PKG_CHECK_MODULES(OPENRAW, libopenraw-gnome-1.0 >= 0.0.4)
 AC_SUBST(OPENRAW_CFLAGS)
 AC_SUBST(OPENRAW_LIBS)
 

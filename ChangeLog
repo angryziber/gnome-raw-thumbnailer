@@ -1,3 +1,10 @@
+2007-12-02  Hubert Figuiere  <hub@figuiere.net>
+
+	* Add support for rotated thumbnails.
+	* Depends on libopenraw 0.0.4
+
+==== 0.99 ====
+	
 2007-06-24  Hubert Figuiere  <hub@figuiere.net>
 
 	* Initial working version.
