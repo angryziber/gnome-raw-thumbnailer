@@ -5,3 +5,4 @@ image/x-nikon-nef
 image/x-olympus-orf
 image/x-pentax-pef
 image/x-sony-arw
+image/x-epson-erf

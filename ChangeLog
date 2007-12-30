@@ -1,3 +1,7 @@
+2007-12-30  Hubert Figuiere  <hub@figuiere.net>
+
+	* data/mime-types.txt: added Epson ERF.
+
 2007-12-02  Hubert Figuiere  <hub@figuiere.net>
 
 	* Add support for rotated thumbnails.
