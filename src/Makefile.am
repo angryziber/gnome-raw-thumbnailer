@@ -2,7 +2,7 @@
 
 
 INCLUDES = -I$(top_srcdir)                                              \
-           $(GSF_CFLAGS) \
+           $(GNOME_CFLAGS) \
            $(OPENRAW_CFLAGS) \
            -DG_LOG_DOMAIN=\"raw-thumbnailer\"    \
            -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"       \
@@ -15,4 +15,4 @@ bin_PROGRAMS = raw-thumbnailer
 
 raw_thumbnailer_SOURCES = raw-thumbnailer.c
 
-raw_thumbnailer_LDADD = $(GSF_LIBS) $(OPENRAW_LIBS) $(INTLLIBS)
+raw_thumbnailer_LDADD = $(GNOME_LIBS) $(OPENRAW_LIBS) $(INTLLIBS)
