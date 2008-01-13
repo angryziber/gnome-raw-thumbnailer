@@ -1,9 +1,9 @@
 /**
    raw-thumbnailer.c
    Copyright (c) 2007 Novell, Inc.
-	 Copyright (C) 2003,2004 Bastien Nocera <hadess@hadess.net>
-	 
-	 Author: Hubert Figuiere <hfiguiere@novell.com>
+   Copyright (C) 2003,2004 Bastien Nocera <hadess@hadess.net>
+    
+   Author: Hubert Figuiere <hfiguiere@novell.com>
    Derived from the totem video thumbnailer.
    
    This program is free software; you can redistribute it and/or modify
