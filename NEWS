@@ -1,3 +1,8 @@
+0.99.2
+
+- NEW: add Minolta raw mime type to the handlers.
+- NEW: bump requirement to libopenraw 0.0.5
+
 0.99.1
 
 - NEW: thumbnails are oriented. Require libopenraw 0.0.4

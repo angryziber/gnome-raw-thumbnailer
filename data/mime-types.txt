@@ -6,3 +6,4 @@ image/x-olympus-orf
 image/x-pentax-pef
 image/x-sony-arw
 image/x-epson-erf
+image/x-minolta-mrw

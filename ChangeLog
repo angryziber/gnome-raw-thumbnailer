@@ -1,3 +1,8 @@
+2008-02-26  Hubert Figuiere  <hub@figuiere.net>
+
+	* data/mime-types.txt: Added Minolta MRW.
+	* configure.ac: bump requirement to libopenraw 0.0.5
+
 2008-01-13  Hubert Figuiere  <hub@figuiere.net>
 
 	* configure.ac, src/Makefile.am: Don't check for gsf
