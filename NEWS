@@ -1,3 +1,10 @@
+3.0.0
+
+- Remove gnome-vfs dependency
+- Adapt everything for Gnome3
+- Require libopenraw 0.0.9
+- Tarballs in bz2 and xz
+
 0.99.2
 
 - NEW: add Minolta raw mime type to the handlers.
