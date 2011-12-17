@@ -1,0 +1,3 @@
+[Thumbnailer Entry]
+TryExec=@BINDIR@/raw-thumbnailer
+Exec=@BINDIR@/raw-thumbnailer -s %s %u %o

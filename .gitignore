@@ -23,9 +23,7 @@ po/POTFILES
 po/stamp-it
 po/.intltool-merge-cache
 src/raw-thumbnailer
-data/raw-thumbnailer.schemas
-data/raw-thumbnailer.schemas.in
-data/update-gconf.sh
+data/raw-thumbnailer
 .deps
 .libs
 *~

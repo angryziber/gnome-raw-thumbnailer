@@ -1,10 +1,11 @@
-AC_INIT(src/raw-thumbnailer.c)
+AC_INIT(raw-thumbnailer, 3.0.0)
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(raw-thumbnailer, 0.99.2)
-
+AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-bzip2 dist-xz])
 AM_MAINTAINER_MODE
+m4_ifndef([AM_SILENT_RULES], [m4_define([AM_SILENT_RULES],[])])
+AM_SILENT_RULES([yes])
 
 AC_PROG_INTLTOOL([0.21])
 
@@ -33,9 +34,6 @@ GETTEXT_PACKAGE=raw-thumbnailer
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, ["$GETTEXT_PACKAGE"], ["definition of GETTEXT_PACKAGE"])
-
-AC_PATH_PROG(GCONFTOOL, gconftool-2)
-AM_GCONF_SOURCE_2
 
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
