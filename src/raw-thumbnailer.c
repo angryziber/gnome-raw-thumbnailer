@@ -1,9 +1,10 @@
 /**
    raw-thumbnailer.c
+   Copyright (c) 2011 Hub Figuière
    Copyright (c) 2007 Novell, Inc.
    Copyright (C) 2003,2004 Bastien Nocera <hadess@hadess.net>
     
-   Author: Hubert Figuiere <hfiguiere@novell.com>
+   Author: Hub Figuière <hub@figuiere.net>
    Derived from the totem video thumbnailer.
    
    This program is free software; you can redistribute it and/or modify
@@ -26,6 +27,7 @@
 
 #include <stdio.h>
 
+#include <gio/gio.h>
 #include <glib/gi18n.h>
 #include <libopenraw-gnome/gdkpixbuf.h>
 
@@ -80,8 +82,12 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
 	  }
 	}
 
-	if (small != NULL)
+	g_free(a_width);
+	g_free(a_height);
+
+	if (small) {
 		gdk_pixbuf_unref (small);
+	}
 	return;
 }
 
@@ -107,7 +113,6 @@ int main (int argc, char ** argv)
 	const char *input_name;
 	GOptionContext *context;
 	GError *err = NULL;
-	gchar *inputfname;
 	gboolean success;
 	int size;
 	GdkPixbuf *pixbuf;
@@ -136,13 +141,20 @@ int main (int argc, char ** argv)
 	input_name = filenames[0];
 	output_name = filenames[1];
 
-	inputfname = g_filename_from_uri (input_name, NULL, NULL);
+	GFile* file = g_file_new_for_commandline_arg(input_name);
+	char* uri = g_file_get_uri(file);
+	g_object_unref(file);
+
+	char* inputfname = g_filename_from_uri (uri, NULL, NULL);
+	g_free(uri);
 
 	pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, output_size);
+	g_free(inputfname);
 	
 	save_pixbuf(pixbuf, output_name, output_size);
-	
-	g_free(inputfname);
+
+	g_object_unref(pixbuf);	
+	g_option_context_free(context);
 
 	return 0;
 }
