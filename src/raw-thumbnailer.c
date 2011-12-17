@@ -28,7 +28,6 @@
 
 #include <glib/gi18n.h>
 #include <libopenraw-gnome/gdkpixbuf.h>
-#include <libgnomevfs/gnome-vfs.h>
 
 static gboolean jpeg_output = FALSE;
 static gboolean output_size = 128;
@@ -69,16 +68,16 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
 	a_height = g_strdup_printf ("%d", height);
 
 	if (gdk_pixbuf_save (small, path, 
-											 jpeg_output ? "jpeg" : "png", &err,
-											 "tEXt::Thumb::Image::Width", a_width,
-												 "tEXt::Thumb::Image::Height", a_height,
-											 NULL) == FALSE) {
-		if (err != NULL) {
-			g_print ("raw-thumbnailer couldn't write the thumbnail '%s': %s\n", path, err->message);
-			g_error_free (err);
-		} else {
-			g_print ("raw-thumbnailer couldn't write the thumbnail '%s'\n", path);
-		}
+			     jpeg_output ? "jpeg" : "png", &err,
+			     "tEXt::Thumb::Image::Width", a_width,
+			     "tEXt::Thumb::Image::Height", a_height,
+			     NULL) == FALSE) {
+	  if (err != NULL) {
+	    g_print ("raw-thumbnailer couldn't write the thumbnail '%s': %s\n", path, err->message);
+	    g_error_free (err);
+	  } else {
+	    g_print ("raw-thumbnailer couldn't write the thumbnail '%s'\n", path);
+	  }
 	}
 
 	if (small != NULL)
@@ -137,8 +136,7 @@ int main (int argc, char ** argv)
 	input_name = filenames[0];
 	output_name = filenames[1];
 
-	gnome_vfs_init();
-	inputfname = gnome_vfs_get_local_path_from_uri (input_name);
+	inputfname = g_filename_from_uri (input_name, NULL, NULL);
 
 	pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, output_size);
 	

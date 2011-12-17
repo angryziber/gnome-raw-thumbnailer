@@ -20,11 +20,11 @@ mime_DATA = raw-thumbnailer.xml
 
 install-data-local: $(schema_DATA)
 if GCONF_SCHEMAS_INSTALL
-        if test -z "$(DESTDIR)" ; then \
-        for p in $^ ; do \
-                GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p 2>&1 > /dev/null; \
-        done \
-        fi
+	if test -z "$(DESTDIR)" ; then \
+	for p in $^ ; do \
+		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p 2>&1 > /dev/null; \
+	done \
+	fi
 endif
 
 EXTRA_DIST = \
