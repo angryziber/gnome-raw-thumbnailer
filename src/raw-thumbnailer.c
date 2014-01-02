@@ -144,7 +144,8 @@ int main (int argc, char ** argv)
   char* inputfname = g_filename_from_uri (uri, NULL, NULL);
   g_free(uri);
 
-  pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, output_size);
+  int requested_size = output_size > 160 && output_size < 362 ? 512 : output_size;
+  pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, requested_size);
   g_free(inputfname);
   
   save_pixbuf(pixbuf, output_name, output_size);
