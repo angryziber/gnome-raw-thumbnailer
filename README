@@ -1,0 +1,16 @@
+This is a fork of gnome-raw-thumbnailer from Gnome's git.
+
+Note: there are two projects in existence with the same name.
+
+1. The one from Sourceforge: http://gnome-raw-thumb.sourceforge.net/
+   This is the one Ubuntu packages. It is based on the old dcraw.c code 
+   and was last updated in 2005. Doesn't support orintations and is
+   terribly slow with thumbnail sizes over 160 pixels (exif embedded thumbnail).
+   
+2. The one in Gnome git: http://libopenraw.freedesktop.org/wiki/RawThumbnailer/
+   This one is very simple, as it delegates everything to libopenraw.
+   It supports orientations, is much faster, but fails with 256px thumbnails.
+   
+This fork fixes the issue with Gnome's thumbnailer, so it is fast and works
+nicely with Ubuntu 13.10. Hopefully the changes from here can be pushed upstream
+and Ubuntu will adopt this working version soon.
