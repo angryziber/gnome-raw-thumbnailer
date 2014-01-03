@@ -38,7 +38,7 @@ static gboolean g_fatal_warnings = FALSE;
 static char **filenames = NULL;
 
 static void
-save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
+save_pixbuf (GdkPixbuf *pixbuf, const char *fname, const char *path, int size)
 {
   GdkPixbuf *small = NULL;
   GError *err = NULL;
@@ -47,6 +47,21 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
   height = gdk_pixbuf_get_height (pixbuf);
   width = gdk_pixbuf_get_width (pixbuf);
   
+  gboolean is_3x2_aspect = g_str_has_suffix(fname, ".cr2") || g_str_has_suffix(fname, ".CR2") ||
+                           g_str_has_suffix(fname, ".nef") || g_str_has_suffix(fname, ".NEF");
+
+  if (is_3x2_aspect && width == 160 && height == 120) {
+    // we've got horizontal embedded exif thumbnail with black bars
+    small = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 160, 104);
+    gdk_pixbuf_copy_area (pixbuf, 0, 8, 160, 104, small, 0, 0);
+  }
+  else
+  if (is_3x2_aspect && width == 120 && height == 160) {
+    // we've got vertical embedded exif thumbnail with black bars
+    small = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 104, 160);
+    gdk_pixbuf_copy_area (pixbuf, 8, 0, 104, 160, small, 0, 0);
+  }
+  else
   if (size < height || size < width) {
     int d_width, d_height;
     
@@ -86,11 +101,7 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *path, int size)
   
   g_free(a_width);
   g_free(a_height);
-  
-  if (small) {
-    g_object_unref (small);
-  }
-  return;
+  g_object_unref(small);
 }
 
 static const GOptionEntry entries[] = {
@@ -146,10 +157,10 @@ int main (int argc, char ** argv)
 
   int requested_size = output_size > 160 && output_size < 362 ? 512 : output_size;
   pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, requested_size);
+  
+  save_pixbuf(pixbuf, inputfname, output_name, output_size);
+  
   g_free(inputfname);
-  
-  save_pixbuf(pixbuf, output_name, output_size);
-  
   g_object_unref(pixbuf);	
   g_option_context_free(context);
   
