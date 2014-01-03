@@ -37,6 +37,18 @@ static gboolean verbose = FALSE;
 static gboolean g_fatal_warnings = FALSE;
 static char **filenames = NULL;
 
+static GdkPixbuf* strip_black_bars_top_bottom (GdkPixbuf *pixbuf) {
+  GdkPixbuf *result = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 160, 104);
+  gdk_pixbuf_copy_area (pixbuf, 0, 8, 160, 104, result, 0, 0);
+  return result;
+}
+
+static GdkPixbuf* strip_black_bars_left_right (GdkPixbuf *pixbuf) {
+  GdkPixbuf *result = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 104, 160);
+  gdk_pixbuf_copy_area (pixbuf, 8, 0, 104, 160, result, 0, 0);
+  return result;
+}
+
 static void
 save_pixbuf (GdkPixbuf *pixbuf, const char *fname, const char *path, int size)
 {
@@ -51,15 +63,11 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *fname, const char *path, int size)
                            g_str_has_suffix(fname, ".nef") || g_str_has_suffix(fname, ".NEF");
 
   if (is_3x2_aspect && width == 160 && height == 120) {
-    // we've got horizontal embedded exif thumbnail with black bars
-    small = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 160, 104);
-    gdk_pixbuf_copy_area (pixbuf, 0, 8, 160, 104, small, 0, 0);
+    small = strip_black_bars_top_bottom (pixbuf);
   }
   else
   if (is_3x2_aspect && width == 120 && height == 160) {
-    // we've got vertical embedded exif thumbnail with black bars
-    small = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 104, 160);
-    gdk_pixbuf_copy_area (pixbuf, 8, 0, 104, 160, small, 0, 0);
+    small = strip_black_bars_left_right (pixbuf);
   }
   else
   if (size < height || size < width) {
