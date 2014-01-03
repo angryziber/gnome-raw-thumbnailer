@@ -37,15 +37,9 @@ static gboolean verbose = FALSE;
 static gboolean g_fatal_warnings = FALSE;
 static char **filenames = NULL;
 
-static GdkPixbuf* strip_black_bars_top_bottom (GdkPixbuf *pixbuf, int width, int height, int amount) {
+static GdkPixbuf* strip_black_bars (GdkPixbuf *pixbuf, int width, int height, int wamount, int hamount) {
   GdkPixbuf *result = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, width, height);
-  gdk_pixbuf_copy_area (pixbuf, 0, amount, width, height, result, 0, 0);
-  return result;
-}
-
-static GdkPixbuf* strip_black_bars_left_right (GdkPixbuf *pixbuf, int width, int height, int amount) {
-  GdkPixbuf *result = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, width, height);
-  gdk_pixbuf_copy_area (pixbuf, amount, 0, width, height, result, 0, 0);
+  gdk_pixbuf_copy_area (pixbuf, wamount, hamount, width, height, result, 0, 0);
   return result;
 }
 
@@ -63,13 +57,11 @@ save_pixbuf (GdkPixbuf *pixbuf, const char *fname, const char *path, int size)
                            g_str_has_suffix(fname, ".nef") || g_str_has_suffix(fname, ".NEF");
 
   if (is_3x2_aspect && width == 160 && height == 120) {
-    height = 104;
-    stripped = strip_black_bars_top_bottom (pixbuf, width, height, 8);
+    stripped = strip_black_bars (pixbuf, width, height = 104, 0, 8);
   }
   else
   if (is_3x2_aspect && width == 120 && height == 160) {
-    width = 104;
-    stripped = strip_black_bars_left_right (pixbuf, width, height, 8);
+    stripped = strip_black_bars (pixbuf, width = 104, height, 8, 0);
   }
   else {
     stripped = pixbuf;
