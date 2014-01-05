@@ -1,3 +1,9 @@
+3.1.0
+
+- Make sure thumbnailer behaves nicely with the latest Gnome/Nautilus
+- Fix thumbnails larger than 160 and smaller than 362
+- Strip black bars on smaller tumbnails (160 and below)
+
 3.0.0
 
 - Remove gnome-vfs dependency
