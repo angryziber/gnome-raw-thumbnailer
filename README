@@ -14,3 +14,7 @@ Note: there are two projects in existence with the same name.
 This fork fixes the issue with Gnome's thumbnailer, so it is fast and works
 nicely with Ubuntu 13.10. Hopefully the changes from here can be pushed upstream
 and Ubuntu will adopt this working version soon.
+
+Binary packages for Ubuntu 13.10 saucy::
+https://launchpad.net/~anton-azib/+archive/fixes/
+
