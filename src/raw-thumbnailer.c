@@ -162,7 +162,7 @@ int main (int argc, char ** argv)
   char* inputfname = g_filename_from_uri (uri, NULL, NULL);
   g_free(uri);
 
-  int requested_size = output_size > 160 && output_size < 362 ? 512 : output_size;
+  int requested_size = output_size > 160 && output_size < 1024 ? 1024 : output_size;
   pixbuf = or_gdkpixbuf_extract_rotated_thumbnail(inputfname, requested_size);
   
   save_pixbuf(pixbuf, inputfname, output_name, output_size);
