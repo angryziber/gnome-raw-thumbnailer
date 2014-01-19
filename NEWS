@@ -1,3 +1,9 @@
+3.1.1
+
+- Work around libopenraw bug for newer camers as well, eg 7D, 5D mark3
+  https://bugs.freedesktop.org/show_bug.cgi?id=72270
+
+
 3.1.0
 
 - Make sure thumbnailer behaves nicely with the latest Gnome/Nautilus
