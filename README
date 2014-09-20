@@ -11,9 +11,7 @@ Note: there are two projects in existence with the same name.
    This one is very simple, as it delegates everything to libopenraw.
    It supports orientations, is much faster, but fails with 256px thumbnails.
    
-This fork fixes the issue with Gnome's thumbnailer, so it is fast and works
-nicely with Ubuntu 13.10 and 14.04. Hopefully the changes from here can be pushed upstream
-and Ubuntu will adopt this working version soon.
+This fork fixes the issue with Gnome's thumbnailer, so it is fast and works nicely with Ubuntu 13.10 and 14.04. Hopefully the changes from here can be pushed upstream and Ubuntu will adopt this working version soon.
 
 Binary packages for Ubuntu 13.10 Saucy and 14.04 Trusty:
 https://launchpad.net/~anton-azib/+archive/fixes/
@@ -22,6 +20,4 @@ Note: if you want to make thumbnail generation even faster, edit
 
 /usr/share/thumbnailers/raw-thumbnailer
 
-and replace "-s %s" with "-s 160" - this will generate 160px thumbnails instead of 256px,
-using the thumbnail that is already present in raw files instead of parsing and replacing 
-the whole jpeg preview.
+and replace "-s %s" with "-s 160" - this will generate 160px thumbnails instead of 256px, using the thumbnail that is already present in raw files instead of parsing and replacing the whole jpeg preview.
