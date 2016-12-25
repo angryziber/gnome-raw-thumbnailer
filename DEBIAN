@@ -1,0 +1,3 @@
+* change debian/changelog
+* bzr bd -- -S -sa
+* dput ppa:anton-azib/fixes ../*.changes

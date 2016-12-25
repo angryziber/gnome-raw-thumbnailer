@@ -1,0 +1,29 @@
+raw-thumbnailer (3.1.1-2ubuntu1) yakkety; urgency=low
+
+  * Build for 16.10 yakkety.
+
+ -- Anton Keks <anton@azib.net>  Sun, 25 Dec 2016 15:00:00 +0200
+
+raw-thumbnailer (3.1.1-1ubuntu1) xenial; urgency=low
+
+  * Build for 16.04 xenial.
+
+ -- Anton Keks <anton@azib.net>  Sun, 25 Dec 2016 15:00:00 +0200
+
+raw-thumbnailer (3.1.1-0ubuntu1) saucy; urgency=low
+
+  * New upstream bugfix release.
+
+ -- Anton Keks <anton@azib.net>  Sun, 19 Jan 2014 17:38:13 +0200
+
+raw-thumbnailer (3.1.0-0ubuntu1) saucy; urgency=low
+
+  * New upstream release.
+
+ -- Anton Keks <anton@azib.net>  Mon, 06 Jan 2014 00:50:13 +0200
+
+raw-thumbnailer (3.0.0-1ubuntu4) saucy; urgency=low
+
+  * Initial release (Closes: #1256639)
+
+ -- Anton Keks <anton@azib.net>  Sun, 05 Jan 2014 12:55:11 +0200

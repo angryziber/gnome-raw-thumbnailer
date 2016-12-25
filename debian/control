@@ -1,0 +1,20 @@
+Source: raw-thumbnailer
+Section: graphics
+Priority: optional
+Maintainer: Anton Keks <anton@azib.net>
+Build-Depends: debhelper (>= 9),
+               intltool,
+               autotools-dev,
+               libglib2.0-dev,
+               libgdk-pixbuf2.0-dev,
+               libopenrawgnome-dev
+Standards-Version: 3.9.8
+Homepage: http://github.com/angryziber/gnome-raw-thumbnailer
+
+Package: raw-thumbnailer
+Architecture: any
+Conflicts: gnome-raw-thumbnailer
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: RAW file thumbnailer for GNOME
+ gnome-raw-thumbnailer is a thumbnailer for GNOME that will make thumbnails 
+ for camera RAW files by extracting their preview.
