@@ -1,6 +1,8 @@
 This is a fork of gnome-raw-thumbnailer from Gnome's git.
 
-Note: there are two projects in existence with the same name.
+Needed for those who want to see thumbnails of their raw (e.g. CR2) photos in Ubuntu, or other Linux Gnome installations.
+
+Note: there are two projects in existence with the this name.
 
 1. The one from Sourceforge: http://gnome-raw-thumb.sourceforge.net/
    This is the one Ubuntu packages. It is based on the old dcraw.c code 
